@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("language")
+@RequestMapping("languages")
 public class IdiomaController extends CrudController<Idioma, IdiomaDto, Long> {
 
     private final IIdiomaService service;

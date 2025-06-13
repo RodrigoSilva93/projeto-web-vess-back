@@ -1,28 +1,28 @@
 package br.edu.utfpr.pb.project.server.controller;
 
-import br.edu.utfpr.pb.project.server.dto.PaisDto;
-import br.edu.utfpr.pb.project.server.model.Pais;
+import br.edu.utfpr.pb.project.server.dto.AvaliacaoDto;
+import br.edu.utfpr.pb.project.server.model.Avaliacao;
+import br.edu.utfpr.pb.project.server.service.IAvaliacaoService;
 import br.edu.utfpr.pb.project.server.service.ICrudService;
-import br.edu.utfpr.pb.project.server.service.IPaisService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("countries")
-public class PaisController extends CrudController<Pais, PaisDto, Long>{
+@RequestMapping("assessments")
+public class AvaliacaoController extends CrudController<Avaliacao, AvaliacaoDto, Long> {
 
-    private final IPaisService service;
+    private final IAvaliacaoService service;
     private final ModelMapper modelMapper;
 
-    public PaisController(IPaisService service, ModelMapper modelMapper) {
-        super(Pais.class, PaisDto.class);
+    public AvaliacaoController(IAvaliacaoService service, ModelMapper modelMapper) {
+        super(Avaliacao.class, AvaliacaoDto.class);
         this.service = service;
         this.modelMapper = modelMapper;
     }
 
     @Override
-    protected ICrudService<Pais, Long> getService() {
+    protected ICrudService<Avaliacao, Long> getService() {
         return service;
     }
 

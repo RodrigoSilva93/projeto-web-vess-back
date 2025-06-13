@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("amostras")
+@RequestMapping("samples")
 public class AmostraController extends CrudController<Amostra, AmostraDto, Long> {
 
     private final IAmostraService service;
@@ -25,7 +25,7 @@ public class AmostraController extends CrudController<Amostra, AmostraDto, Long>
     protected ICrudService<Amostra, Long> getService() {
         return service;
     }
-    
+
     @Override
     protected ModelMapper getModelMapper() {
         return modelMapper;
