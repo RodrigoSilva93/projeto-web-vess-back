@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum Country {
+public enum PaisType {
     ARGENTINA("Argentina"),
     BOLIVIA("Bolivia"),
     BRASIL("Brasil"),

@@ -1,7 +1,7 @@
 package br.edu.utfpr.pb.project.server.controller;
 
-import br.edu.utfpr.pb.project.server.dto.UserDto;
-import br.edu.utfpr.pb.project.server.model.User;
+import br.edu.utfpr.pb.project.server.dto.UsuarioDto;
+import br.edu.utfpr.pb.project.server.model.Usuario;
 import br.edu.utfpr.pb.project.server.repository.UserRepository;
 import br.edu.utfpr.pb.project.server.service.UserService;
 import br.edu.utfpr.pb.project.server.shared.GenericResponse;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
@@ -31,32 +29,37 @@ public class UserController {
     }
 
     @PostMapping
-    public GenericResponse createUser(@Valid @RequestBody User user) {
-        userService.save(user);
-        return GenericResponse.builder().message("User saved.").build();
+    public GenericResponse createUser(@Valid @RequestBody Usuario usuario) {
+        userService.save(usuario);
+        return GenericResponse.builder().message("Usuário salvo.").build();
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAllUsers() {
+        return ResponseEntity.ok(userRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList()));
     }
 
     @GetMapping("/find")
     public ResponseEntity<?> findUserByEmail(@RequestParam String email) {
-        User user = userRepository.findByEmail(email);
+        Usuario usuario = userRepository.findByEmail(email);
 
-        if (user != null) {
-            UserDto userDto = convertToDto(user);
-            return ResponseEntity.ok(userDto);
+        if (usuario != null) {
+            UsuarioDto usuarioDto = convertToDto(usuario);
+            return ResponseEntity.ok(usuarioDto);
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
     }
 
-    private UserDto convertToDto(User user) {
-        UserDto userDto = new UserDto();
-        userDto.setId(user.getId());
-        userDto.setName(user.getName());
-        userDto.setEmail(user.getEmail());
-        userDto.setCountry(user.getCountry());
-        userDto.setAddress(user.getAddress());
-        userDto.setLanguage(user.getLanguage());
+    private UsuarioDto convertToDto(Usuario usuario) {
+        UsuarioDto usuarioDto = new UsuarioDto();
+        usuarioDto.setId(usuario.getId());
+        usuarioDto.setNome(usuario.getNome());
+        usuarioDto.setEmail(usuario.getEmail());
+        usuarioDto.setPais(usuario.getPais());
+        usuarioDto.setEndereco(usuario.getEndereco());
+        usuarioDto.setIdioma(usuario.getIdioma());
 
-        return userDto;
+        return usuarioDto;
     }
 }

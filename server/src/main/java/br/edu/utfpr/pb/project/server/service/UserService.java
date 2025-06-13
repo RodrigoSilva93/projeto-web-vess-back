@@ -1,17 +1,16 @@
 package br.edu.utfpr.pb.project.server.service;
 
-import br.edu.utfpr.pb.project.server.model.User;
+import br.edu.utfpr.pb.project.server.model.Usuario;
 import br.edu.utfpr.pb.project.server.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService implements ICrudService<User, Long> {
+public class UserService implements ICrudService<Usuario, Long> {
 
     private final UserRepository userRepository;
     public UserService(UserRepository userRepository) {
@@ -19,29 +18,29 @@ public class UserService implements ICrudService<User, Long> {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<Usuario> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public List<User> findAll(Sort sort) {
+    public List<Usuario> findAll(Sort sort) {
         return userRepository.findAll(sort);
     }
 
     @Override
-    public Page<User> findAll(Pageable pageable) {
+    public Page<Usuario> findAll(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 
-    public User save(User user) { return userRepository.save(user); }
+    public Usuario save(Usuario usuario) { return userRepository.save(usuario); }
 
     @Override
-    public User saveAndFlush(User entity) {
+    public Usuario saveAndFlush(Usuario entity) {
         return userRepository.saveAndFlush(entity);
     }
 
     @Override
-    public Iterable<User> save(Iterable<User> iterable) {
+    public Iterable<Usuario> save(Iterable<Usuario> iterable) {
         return userRepository.saveAll(iterable);
     }
 
@@ -51,7 +50,7 @@ public class UserService implements ICrudService<User, Long> {
     }
 
     @Override
-    public User findOne(Long aLong) {
+    public Usuario findOne(Long aLong) {
         return userRepository.findById(aLong).orElse(null);
     }
 
@@ -71,7 +70,7 @@ public class UserService implements ICrudService<User, Long> {
     }
 
     @Override
-    public void delete(Iterable<? extends User> iterable) {
+    public void delete(Iterable<? extends Usuario> iterable) {
         userRepository.deleteAll(iterable);
     }
 

@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class CrudController<T, D, ID extends Serializable>{
+public abstract class CrudController<T, D, ID extends Serializable> {
 
     protected abstract ICrudService<T, ID> getService();
     protected abstract ModelMapper getModelMapper();

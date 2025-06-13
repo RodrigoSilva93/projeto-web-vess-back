@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum Language {
+public enum IdiomaType {
     ESPANHOL("Espanhol"),
     PORTUGUES_BRASIL("Português (Brasil)"),
     PORTUGUES_PORTUGAL("Português (Portugal)"),
