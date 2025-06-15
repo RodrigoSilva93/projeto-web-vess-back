@@ -39,8 +39,8 @@ public class UserController {
         return ResponseEntity.ok(usuarioRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList()));
     }
 
-    @GetMapping("/find/{email}")
-    public ResponseEntity<?> findUserByEmail(@PathVariable String email) {
+    @GetMapping("/find")
+    public ResponseEntity<?> findUserByEmail(@RequestParam String email) {
         Usuario usuario = usuarioRepository.findByEmail(email);
 
         if (usuario != null) {

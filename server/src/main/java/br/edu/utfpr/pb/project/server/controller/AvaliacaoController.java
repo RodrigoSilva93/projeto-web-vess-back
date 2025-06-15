@@ -38,7 +38,7 @@ public class AvaliacaoController extends CrudController<Avaliacao, AvaliacaoDto,
 
     @PostMapping
     @RequestMapping("save")
-    public ResponseEntity<AvaliacaoDto> save(@RequestBody AvaliacaoSaveRequest request) {
+    public ResponseEntity<?> save(@RequestBody AvaliacaoSaveRequest request) {
         AvaliacaoDto result = service.createAvaliacao(
                 request.getAvaliacao(),
                 request.getCamadas(),

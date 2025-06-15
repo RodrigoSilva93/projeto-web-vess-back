@@ -35,6 +35,7 @@ public class AvaliacaoServiceImpl extends CrudServiceImpl<Avaliacao, Long> imple
         return avaliacaoRepository;
     }
 
+    @Override
     public AvaliacaoDto createAvaliacao(AvaliacaoDto dto, List<CamadaDto> camadasDto, ScoreAmostraDto scoreAmostraDto) {
         Usuario usuario = usuarioRepository.findByEmail(dto.getUsuario().getEmail());
 
