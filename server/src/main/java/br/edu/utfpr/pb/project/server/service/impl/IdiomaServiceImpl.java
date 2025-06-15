@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class IdiomaServiceImpl extends CrudServiceImpl<Idioma, Long> implements IIdiomaService {
+
     private final IdiomaRepository repository;
 
     public IdiomaServiceImpl(IdiomaRepository repository) {

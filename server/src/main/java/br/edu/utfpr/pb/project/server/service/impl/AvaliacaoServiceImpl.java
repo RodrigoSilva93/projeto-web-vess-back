@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AvaliacaoServiceImpl extends CrudServiceImpl<Avaliacao, Long> implements IAvaliacaoService {
+
     private final AvaliacaoRepository repository;
 
     public AvaliacaoServiceImpl(AvaliacaoRepository repository) {

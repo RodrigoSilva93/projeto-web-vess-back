@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.security.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_avaliacao")
-@Getter
-@Setter
+@Getter     @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Avaliacao {
@@ -45,4 +46,7 @@ public class Avaliacao {
 
     @NotNull
     private Timestamp tempoDeAvaliacao;
+
+    @OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AmostraAvaliacao> amostrasAvaliacao = new ArrayList<>();
 }

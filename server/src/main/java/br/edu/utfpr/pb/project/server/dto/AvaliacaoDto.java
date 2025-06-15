@@ -1,12 +1,11 @@
 package br.edu.utfpr.pb.project.server.dto;
 
 import br.edu.utfpr.pb.project.server.model.Usuario;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.security.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class AvaliacaoDto {
@@ -27,4 +26,6 @@ public class AvaliacaoDto {
     private Date dataFimAvaliacao;
 
     private Timestamp tempoDeAvaliacao;
+
+    private List<AmostraDto> amostras;
 }

@@ -9,8 +9,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tb_amostra")
-@Getter
-@Setter
+@Getter     @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Amostra {
@@ -31,4 +30,7 @@ public class Amostra {
     private String typeImageAmostra;
 
     private String outrasInformacoesAmostra;
+
+    @OneToOne(mappedBy = "amostra", cascade = CascadeType.ALL)
+    private ScoreAmostra scoreAmostra;
 }

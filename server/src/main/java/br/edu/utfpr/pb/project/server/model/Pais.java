@@ -11,8 +11,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tb_pais")
-@Getter
-@Setter
+@Getter     @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pais {

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PaisServiceImpl extends CrudServiceImpl<Pais, Long> implements IPaisService {
+
     private final PaisRepository repository;
 
     public PaisServiceImpl(PaisRepository repository) {

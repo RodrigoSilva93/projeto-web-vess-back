@@ -8,8 +8,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "tb_usuario")
-@Getter
-@Setter
+@Getter     @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuario {
