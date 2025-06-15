@@ -1,10 +1,15 @@
 package br.edu.utfpr.pb.project.server.controller;
 
+import br.edu.utfpr.pb.project.server.dto.AvaliacaoSaveRequest;
 import br.edu.utfpr.pb.project.server.dto.AvaliacaoDto;
 import br.edu.utfpr.pb.project.server.model.Avaliacao;
 import br.edu.utfpr.pb.project.server.service.IAvaliacaoService;
 import br.edu.utfpr.pb.project.server.service.ICrudService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +34,17 @@ public class AvaliacaoController extends CrudController<Avaliacao, AvaliacaoDto,
     @Override
     protected ModelMapper getModelMapper() {
         return modelMapper;
+    }
+
+    @PostMapping
+    @RequestMapping("save")
+    public ResponseEntity<AvaliacaoDto> save(@RequestBody AvaliacaoSaveRequest request) {
+        AvaliacaoDto result = service.createAvaliacao(
+                request.getAvaliacao(),
+                request.getCamadas(),
+                request.getScoreAmostra()
+        );
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

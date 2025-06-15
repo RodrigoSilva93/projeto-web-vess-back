@@ -16,7 +16,7 @@ public class ScoreAmostraServiceImpl extends CrudServiceImpl<ScoreAmostra, Long>
     }
 
     @Override
-    public JpaRepository<ScoreAmostra, Long> getRepository() {
+    public JpaRepository<ScoreAmostra, Long> getAvaliacaoRepository() {
         return repository;
     }
 }

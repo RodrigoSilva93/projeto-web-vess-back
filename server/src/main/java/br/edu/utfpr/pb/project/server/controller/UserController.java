@@ -2,8 +2,8 @@ package br.edu.utfpr.pb.project.server.controller;
 
 import br.edu.utfpr.pb.project.server.dto.UsuarioDto;
 import br.edu.utfpr.pb.project.server.model.Usuario;
-import br.edu.utfpr.pb.project.server.repository.UserRepository;
-import br.edu.utfpr.pb.project.server.service.UserService;
+import br.edu.utfpr.pb.project.server.repository.UsuarioRepository;
+import br.edu.utfpr.pb.project.server.service.UsuarioService;
 import br.edu.utfpr.pb.project.server.shared.GenericResponse;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,28 +20,28 @@ import java.util.stream.Collectors;
 @RequestMapping("users")
 public class UserController {
 
-    private final UserService userService;
-    private final UserRepository userRepository;
+    private final UsuarioService usuarioService;
+    private final UsuarioRepository usuarioRepository;
 
-    public UserController(UserService userService, UserRepository userRepository) {
-            this.userService = userService;
-            this.userRepository = userRepository;
+    public UserController(UsuarioService usuarioService, UsuarioRepository usuarioRepository) {
+            this.usuarioService = usuarioService;
+            this.usuarioRepository = usuarioRepository;
     }
 
     @PostMapping
     public GenericResponse createUser(@Valid @RequestBody Usuario usuario) {
-        userService.save(usuario);
+        usuarioService.save(usuario);
         return GenericResponse.builder().message("Usuário salvo.").build();
     }
 
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
-        return ResponseEntity.ok(userRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList()));
+        return ResponseEntity.ok(usuarioRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList()));
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> findUserByEmail(@RequestParam String email) {
-        Usuario usuario = userRepository.findByEmail(email);
+    @GetMapping("/find/{email}")
+    public ResponseEntity<?> findUserByEmail(@PathVariable String email) {
+        Usuario usuario = usuarioRepository.findByEmail(email);
 
         if (usuario != null) {
             UsuarioDto usuarioDto = convertToDto(usuario);

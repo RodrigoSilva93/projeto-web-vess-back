@@ -15,7 +15,7 @@ public class CamadaServiceImpl extends CrudServiceImpl<Camada, Long> implements 
     }
 
     @Override
-    protected JpaRepository<Camada, Long> getRepository() {
+    protected JpaRepository<Camada, Long> getAvaliacaoRepository() {
         return repository;
     }
 }

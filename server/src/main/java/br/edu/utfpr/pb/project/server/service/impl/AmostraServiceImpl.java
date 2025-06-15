@@ -16,7 +16,7 @@ public class AmostraServiceImpl extends CrudServiceImpl<Amostra, Long> implement
     }
 
     @Override
-    protected JpaRepository<Amostra, Long> getRepository() {
+    protected JpaRepository<Amostra, Long> getAvaliacaoRepository() {
         return repository;
     }
 }

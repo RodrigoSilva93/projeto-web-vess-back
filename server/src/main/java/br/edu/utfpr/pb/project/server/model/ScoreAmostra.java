@@ -24,7 +24,7 @@ public class ScoreAmostra {
     private Amostra amostra;
 
     @NotNull
-    private Double scoreAmostra;
+    private Double score;
 
     private String decisaoManejoScoreAmostra;
 

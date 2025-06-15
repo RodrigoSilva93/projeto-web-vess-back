@@ -30,7 +30,7 @@ public class Avaliacao {
     private String localAmostra;
 
     @NotNull
-    private Double scoreAvaliacao;
+    private Double scoreFinal;
 
     @NotNull
     private String decisaoManejoAvaliacao;

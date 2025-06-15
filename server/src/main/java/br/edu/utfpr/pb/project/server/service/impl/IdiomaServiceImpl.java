@@ -16,7 +16,7 @@ public class IdiomaServiceImpl extends CrudServiceImpl<Idioma, Long> implements 
     }
 
     @Override
-    protected JpaRepository<Idioma, Long> getRepository() {
+    protected JpaRepository<Idioma, Long> getAvaliacaoRepository() {
         return repository;
     }
 }

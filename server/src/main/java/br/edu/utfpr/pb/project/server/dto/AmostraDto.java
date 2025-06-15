@@ -16,5 +16,5 @@ public class AmostraDto {
 
     private String outrasInformacoesAmostra;
 
-    private Double scoreAmostra; //retornar o score da amostra
+    private ScoreAmostraDto scoreAmostra;
 }

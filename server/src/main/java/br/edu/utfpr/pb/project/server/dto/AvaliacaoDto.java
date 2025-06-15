@@ -15,7 +15,7 @@ public class AvaliacaoDto {
 
     private String localAmostra;
 
-    private Double scoreAvaliacao;
+    private Double scoreFinal;
 
     private String decisaoManejoAvaliacao;
 

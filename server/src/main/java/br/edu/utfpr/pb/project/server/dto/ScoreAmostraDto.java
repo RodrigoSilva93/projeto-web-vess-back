@@ -10,7 +10,7 @@ public class ScoreAmostraDto {
 
     private Amostra amostra;
 
-    private Double scoreAmostra;
+    private Double score;
 
     private String decisaoManejoScoreAmostra;
 

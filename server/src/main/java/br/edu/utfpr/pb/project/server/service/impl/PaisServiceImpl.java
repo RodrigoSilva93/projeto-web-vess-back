@@ -16,7 +16,7 @@ public class PaisServiceImpl extends CrudServiceImpl<Pais, Long> implements IPai
     }
 
     @Override
-    protected JpaRepository<Pais, Long> getRepository() {
+    protected JpaRepository<Pais, Long> getAvaliacaoRepository() {
         return repository;
     }
 }
