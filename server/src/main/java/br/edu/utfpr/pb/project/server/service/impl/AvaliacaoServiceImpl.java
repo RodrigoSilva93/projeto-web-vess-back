@@ -34,7 +34,7 @@ public class AvaliacaoServiceImpl extends CrudServiceImpl<Avaliacao, Long> imple
     }
 
     @Override
-    public AvaliacaoDto createAvaliacao(AvaliacaoDto dto, ScoreAmostraDto scoreAmostraDto) {
+    public AvaliacaoDto createAvaliacao(AvaliacaoDto dto) {
         Usuario usuario = usuarioRepository.findByEmail(dto.getUsuario().getEmail());
 
         Avaliacao avaliacao = getAvaliacao(dto, usuario);
@@ -53,20 +53,17 @@ public class AvaliacaoServiceImpl extends CrudServiceImpl<Avaliacao, Long> imple
 
             ScoreAmostra scoreAmostra = new ScoreAmostra();
             scoreAmostra.setAmostra(amostraSalva);
-            scoreAmostra.setScore(scoreAmostraDto.getScore());
-            scoreAmostra.setDecisaoManejoScoreAmostra(scoreAmostraDto.getDecisaoManejoScoreAmostra());
-            scoreAmostra.setResumoScoreAmostra(scoreAmostraDto.getResumoScoreAmostra());
-            scoreAmostra.setInfoScoreAmostra(scoreAmostraDto.getInfoScoreAmostra());
+            scoreAmostra.setScore(amostraDto.getScoreAmostra().getScore());
+            scoreAmostra.setDecisaoManejoScoreAmostra(amostraDto.getScoreAmostra().getDecisaoManejoScoreAmostra());
+            scoreAmostra.setResumoScoreAmostra(amostraDto.getScoreAmostra().getResumoScoreAmostra());
+            scoreAmostra.setInfoScoreAmostra(amostraDto.getScoreAmostra().getInfoScoreAmostra());
             scoreAmostraRepository.save(scoreAmostra);
 
-            // Recupera a lista de camadas de cada amostra salva em avaliação
-            // e salva a referência da amostra na camada
-            for (int i = 0; i < dto.getAmostras().get(i).getQtdCamadasAmostra(); i++) {
-                for (Camada camadaAmostra : dto.getAmostras().get(i).getCamadas()) {
-                    camadaAmostra.setAmostra(amostraSalva);
-                    camadaRepository.save(camadaAmostra);
-                }
+            for (Camada camadaAmostra : amostraDto.getCamadas()) {
+                camadaAmostra.setAmostra(amostraSalva);
+                camadaRepository.save(camadaAmostra);
             }
+
 
             AmostraAvaliacao amostraAvaliacao = new AmostraAvaliacao();
             amostraAvaliacao.setAvaliacao(avaliacaoSalva);

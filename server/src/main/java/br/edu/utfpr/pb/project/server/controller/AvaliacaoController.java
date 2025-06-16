@@ -1,6 +1,5 @@
 package br.edu.utfpr.pb.project.server.controller;
 
-import br.edu.utfpr.pb.project.server.dto.AvaliacaoSaveRequest;
 import br.edu.utfpr.pb.project.server.dto.AvaliacaoDto;
 import br.edu.utfpr.pb.project.server.model.Avaliacao;
 import br.edu.utfpr.pb.project.server.service.IAvaliacaoService;
@@ -38,11 +37,8 @@ public class AvaliacaoController extends CrudController<Avaliacao, AvaliacaoDto,
 
     @PostMapping
     @RequestMapping("save")
-    public ResponseEntity<?> save(@RequestBody AvaliacaoSaveRequest request) {
-        AvaliacaoDto result = service.createAvaliacao(
-                request.getAvaliacao(),
-                request.getScoreAmostra()
-        );
+    public ResponseEntity<?> save(@RequestBody AvaliacaoDto request) {
+        AvaliacaoDto result = service.createAvaliacao(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
