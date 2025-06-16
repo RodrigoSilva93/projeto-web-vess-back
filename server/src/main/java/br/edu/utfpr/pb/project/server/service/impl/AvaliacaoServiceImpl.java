@@ -8,8 +8,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @Transactional
 public class AvaliacaoServiceImpl extends CrudServiceImpl<Avaliacao, Long> implements IAvaliacaoService {
@@ -36,7 +34,7 @@ public class AvaliacaoServiceImpl extends CrudServiceImpl<Avaliacao, Long> imple
     }
 
     @Override
-    public AvaliacaoDto createAvaliacao(AvaliacaoDto dto, List<CamadaDto> camadasDto, ScoreAmostraDto scoreAmostraDto) {
+    public AvaliacaoDto createAvaliacao(AvaliacaoDto dto, ScoreAmostraDto scoreAmostraDto) {
         Usuario usuario = usuarioRepository.findByEmail(dto.getUsuario().getEmail());
 
         Avaliacao avaliacao = getAvaliacao(dto, usuario);
@@ -61,12 +59,13 @@ public class AvaliacaoServiceImpl extends CrudServiceImpl<Avaliacao, Long> imple
             scoreAmostra.setInfoScoreAmostra(scoreAmostraDto.getInfoScoreAmostra());
             scoreAmostraRepository.save(scoreAmostra);
 
-            for (CamadaDto camadaDto : camadasDto) {
-                Camada camada = new Camada();
-                camada.setAmostra(amostraSalva);
-                camada.setComprimento(camadaDto.getComprimento());
-                camada.setNota(camadaDto.getNota());
-                camadaRepository.save(camada);
+            // Recupera a lista de camadas de cada amostra salva em avaliação
+            // e salva a referência da amostra na camada
+            for (int i = 0; i < dto.getAmostras().get(i).getQtdCamadasAmostra(); i++) {
+                for (Camada camadaAmostra : dto.getAmostras().get(i).getCamadas()) {
+                    camadaAmostra.setAmostra(amostraSalva);
+                    camadaRepository.save(camadaAmostra);
+                }
             }
 
             AmostraAvaliacao amostraAvaliacao = new AmostraAvaliacao();

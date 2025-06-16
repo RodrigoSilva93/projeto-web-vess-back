@@ -1,6 +1,9 @@
 package br.edu.utfpr.pb.project.server.dto;
 
+import br.edu.utfpr.pb.project.server.model.Camada;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class AmostraDto {
@@ -17,4 +20,6 @@ public class AmostraDto {
     private String outrasInformacoesAmostra;
 
     private ScoreAmostraDto scoreAmostra;
+
+    private List<Camada> camadas;
 }

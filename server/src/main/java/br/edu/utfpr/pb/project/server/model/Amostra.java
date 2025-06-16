@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tb_amostra")
 @Getter     @Setter
@@ -33,4 +36,7 @@ public class Amostra {
 
     @OneToOne(mappedBy = "amostra", cascade = CascadeType.ALL)
     private ScoreAmostra scoreAmostra;
+
+    @OneToMany(mappedBy = "amostra", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Camada> camadas = new ArrayList<>();
 }

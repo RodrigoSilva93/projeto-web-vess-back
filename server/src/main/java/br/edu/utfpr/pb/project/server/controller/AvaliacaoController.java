@@ -41,7 +41,6 @@ public class AvaliacaoController extends CrudController<Avaliacao, AvaliacaoDto,
     public ResponseEntity<?> save(@RequestBody AvaliacaoSaveRequest request) {
         AvaliacaoDto result = service.createAvaliacao(
                 request.getAvaliacao(),
-                request.getCamadas(),
                 request.getScoreAmostra()
         );
 
