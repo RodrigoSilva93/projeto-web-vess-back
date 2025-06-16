@@ -7,7 +7,7 @@ import lombok.Data;
 public class PaisDto {
     private Long id;
 
-    private String name;
+    private String nome;
 
-    private PaisType type;
+    private PaisType tipo;
 }

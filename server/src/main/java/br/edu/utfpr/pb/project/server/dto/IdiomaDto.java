@@ -7,7 +7,7 @@ import lombok.Data;
 public class IdiomaDto {
     private Long id;
 
-    private String name;
+    private String nome;
 
-    private IdiomaType type;
+    private IdiomaType tipo;
 }

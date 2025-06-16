@@ -1,7 +1,6 @@
 package br.edu.utfpr.pb.project.server.model;
 
 import br.edu.utfpr.pb.project.server.enums.IdiomaType;
-import br.edu.utfpr.pb.project.server.enums.PaisType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -22,8 +21,8 @@ public class Idioma {
 
     @NotNull
     @Size(min = 2, max = 50)
-    private String name;
+    private String nome;
 
     @Enumerated(EnumType.STRING)
-    private IdiomaType type;
+    private IdiomaType tipo;
 }
