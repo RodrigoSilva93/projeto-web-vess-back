@@ -3,6 +3,7 @@ package br.edu.utfpr.pb.project.server.controller;
 import br.edu.utfpr.pb.project.server.dto.CamadaDto;
 import br.edu.utfpr.pb.project.server.model.Camada;
 import br.edu.utfpr.pb.project.server.service.ICamadaService;
+import br.edu.utfpr.pb.project.server.service.ICrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +22,7 @@ public class CamadaController extends CrudController<Camada, CamadaDto, Long> {
     }
 
     @Override
-    protected ICamadaService getService() {
+    protected ICrudService<Camada, Long> getService() {
         return service;
     }
 

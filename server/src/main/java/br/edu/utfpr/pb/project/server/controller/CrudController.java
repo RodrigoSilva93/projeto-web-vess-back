@@ -44,22 +44,22 @@ public abstract class CrudController<T, D, ID extends Serializable> {
         );
     }
 
-    @GetMapping("page")
-    public ResponseEntity<Page<D>> findAll(
-        @RequestParam int page,
-        @RequestParam int size,
-        @RequestParam(required = false) String order,
-        @RequestParam(required = false) Boolean asc
-    ) {
-        PageRequest pageRequest = PageRequest.of(page, size);
-        if (order != null && asc != null) {
-            pageRequest = PageRequest.of(page, size,
-                    asc ? Sort.Direction.ASC : Sort.Direction.DESC, order);
-        }
-        return ResponseEntity.ok(
-                getService().findAll(pageRequest).map(this::convertToDto)
-        );
-    }
+//    @GetMapping("page")
+//    public ResponseEntity<Page<D>> findAll(
+//        @RequestParam int page,
+//        @RequestParam int size,
+//        @RequestParam(required = false) String order,
+//        @RequestParam(required = false) Boolean asc
+//    ) {
+//        PageRequest pageRequest = PageRequest.of(page, size);
+//        if (order != null && asc != null) {
+//            pageRequest = PageRequest.of(page, size,
+//                    asc ? Sort.Direction.ASC : Sort.Direction.DESC, order);
+//        }
+//        return ResponseEntity.ok(
+//                getService().findAll(pageRequest).map(this::convertToDto)
+//        );
+//    }
 
     @GetMapping("{id}")
     public ResponseEntity<D> findOne(@PathVariable ID id) {
@@ -74,21 +74,21 @@ public abstract class CrudController<T, D, ID extends Serializable> {
                 .body(convertToDto(getService().save(convertToEntity(entity))));
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<D> update(@PathVariable ID id, @RequestBody @Valid D entity) {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(convertToDto(getService().save(convertToEntity(entity))));
-    }
+//    @PutMapping("{id}")
+//    public ResponseEntity<D> update(@PathVariable ID id, @RequestBody @Valid D entity) {
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(convertToDto(getService().save(convertToEntity(entity))));
+//    }
 
-    @GetMapping("exists/{id}")
-    public ResponseEntity<Boolean> exists(@PathVariable ID id) {
-        return ResponseEntity.ok(getService().exists(id));
-    }
-
-    @GetMapping("count")
-    public ResponseEntity<Long> count() {
-        return ResponseEntity.ok(getService().count());
-    }
+//    @GetMapping("exists/{id}")
+//    public ResponseEntity<Boolean> exists(@PathVariable ID id) {
+//        return ResponseEntity.ok(getService().exists(id));
+//    }
+//
+//    @GetMapping("count")
+//    public ResponseEntity<Long> count() {
+//        return ResponseEntity.ok(getService().count());
+//    }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable ID id) {

@@ -5,36 +5,31 @@ spring:
     active: test
   jpa:
     properties:
-      javax:
+      jakarta:
         persistence:
           validation:
             mode: none
       hibernate:
         format_sql: false
     show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 ---
 spring:
   config:
     activate:
       on-profile: test
   datasource:
-    url: jdbc:h2:mem:auto-parts-web-dev-test
-minio:
-  endpoint: http://127.0.0.1:9000
-  port: 9000
-  accessKey:  minio@admin
-  secretKey:  minio@admin
-  secure: false
-  bucket-name: commons
-  image-size: 10485760
-  file-size: 104857600
+    url: jdbc:h2:mem:vess-web-dev-test
 ---
 spring:
   config:
     activate:
       on-profile: prod-postgres
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5434/auto-parts-web-dev
+    url: jdbc:postgresql://127.0.0.1:5434/vess-web-dev-prod
     username: postgres
     password: postgres
   jpa:
