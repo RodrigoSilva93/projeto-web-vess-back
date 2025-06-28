@@ -45,7 +45,7 @@ public class Avaliacao {
     private Date dataFimAvaliacao;
 
     @NotNull
-    private Timestamp tempoDeAvaliacao;
+    private Long tempoDeAvaliacao;
 
     @OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AmostraAvaliacao> amostrasAvaliacao = new ArrayList<>();

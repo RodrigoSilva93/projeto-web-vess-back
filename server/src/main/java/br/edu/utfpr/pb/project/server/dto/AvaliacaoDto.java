@@ -25,7 +25,7 @@ public class AvaliacaoDto {
 
     private Date dataFimAvaliacao;
 
-    private Timestamp tempoDeAvaliacao;
+    private Long tempoDeAvaliacao;
 
     private List<AmostraDto> amostras;
 }

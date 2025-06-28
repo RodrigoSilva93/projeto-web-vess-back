@@ -8,5 +8,5 @@ import br.edu.utfpr.pb.project.server.model.Avaliacao;
 import java.util.List;
 
 public interface IAvaliacaoService extends ICrudService<Avaliacao, Long> {
-    AvaliacaoDto createAvaliacao(AvaliacaoDto dto);
+    AvaliacaoDto createAvaliacao(AvaliacaoDto dto, String email);
 }
