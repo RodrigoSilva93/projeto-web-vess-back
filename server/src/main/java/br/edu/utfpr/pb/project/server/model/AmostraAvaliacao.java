@@ -1,5 +1,6 @@
 package br.edu.utfpr.pb.project.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +25,6 @@ public class AmostraAvaliacao {
 
     @ManyToOne
     @JoinColumn(name = "avaliacao_id")
+    @JsonIgnore
     private Avaliacao avaliacao;
 }

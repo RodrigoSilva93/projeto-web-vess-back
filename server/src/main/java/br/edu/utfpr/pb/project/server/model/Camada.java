@@ -1,5 +1,7 @@
 package br.edu.utfpr.pb.project.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,6 +23,7 @@ public class Camada {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "amostra_id")
+    @JsonIgnore
     private Amostra amostra;
 
     @NotNull
