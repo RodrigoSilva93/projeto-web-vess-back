@@ -26,11 +26,13 @@ public class Amostra {
     @NotNull
     private Integer qtdCamadasAmostra;
 
-    @Column(name = "content_image_amostra")
-    private String contentImageAmostra;
+    //@Column(name = "content_image_amostra")
+    //private String contentImageAmostra;
 
-    @Column(name = "type_image_amostra")
-    private String typeImageAmostra;
+    //@Column(name = "type_image_amostra")
+    //private String typeImageAmostra;
+
+    private String imagemNomeArquivo;
 
     private String outrasInformacoesAmostra;
 
